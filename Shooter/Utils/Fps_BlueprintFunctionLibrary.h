@@ -21,11 +21,12 @@ class SHOOTER_API UFps_BlueprintFunctionLibrary : public UBlueprintFunctionLibra
 		const FRotator SpawnRotation,
 		AActor* SpawnActor);
 
+	// Fps_BlueprintFunctionLibrary.h - Fix the FinishSpawn signature:
 	UFUNCTION(BlueprintCallable, Category = "AuraAbilitySystemLibrary|GameplayUtils")
 	static void FinishSpawn(
 		AProjectile* Projectile,
-		const FVector& SpawnLocation,
-		const FRotator& SpawnRotation,
-		const FVector& LaunchDir,
+		const FVector& SpawnLocation,  // Changed from FVector to const FVector&
+		const FRotator& SpawnRotation, // Changed from FRotator to const FRotator&
+		const FVector& LaunchDir,      // Changed from FVector to const FVector&
 		float GravityScale = 1.f);
 };

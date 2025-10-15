@@ -1,6 +1,4 @@
-﻿// Fill out your copyright notice in the Description page of Project Settings.
-
-#pragma once
+﻿#pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
@@ -16,24 +14,17 @@ class SHOOTER_API AProjectile : public AActor
 
 public:
 	AProjectile();
+
+	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
-	void Aim();
-	void Throw();
-	void DealDamage();
+
+	UFUNCTION(BlueprintCallable, Category = "Projectile")
+	virtual void DealDamage();
 
 protected:
-	virtual void BeginPlay() override;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	USphereComponent* Sphere;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	TObjectPtr<USphereComponent> Sphere;
-
-private:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	TObjectPtr<UProjectileMovementComponent> ProjectileMovementComponent;
-	
-	UPROPERTY()
-	class AProjectile* CurrentProjectile;
-    
-	// Add this function
-	void SpawnProjectile();
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	UProjectileMovementComponent* ProjectileMovementComponent;
 };

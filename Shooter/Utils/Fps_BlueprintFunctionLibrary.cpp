@@ -7,7 +7,8 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 
-AActor* UFps_BlueprintFunctionLibrary::SpawnActorDeferred(
+// method that sets up a projectile of any type, without returning reference or initializing them in real world.
+AActor* UFps_BlueprintFunctionLibrary::SpawnActorDeferred( 
 	const UObject* WorldContextObject,
 	TSubclassOf<AProjectile> ProjectileClass,
 	const FVector SpawnLocation,
@@ -20,23 +21,24 @@ AActor* UFps_BlueprintFunctionLibrary::SpawnActorDeferred(
 	
 	if (UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::LogAndReturnNull))
 	{
-		return  World->SpawnActorDeferred<AProjectile>(
+		return World->SpawnActorDeferred<AProjectile>(
 		ProjectileClass,
 		SpawnTransform,
 		SpawnActor,
 		nullptr,
 		ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
-		
 	}
 	return nullptr;
 }
 
+// method that initializes projectile and determines its speed, gravity scale and direction
+// Fps_BlueprintFunctionLibrary.cpp - Fix the FinishSpawn implementation:
 void UFps_BlueprintFunctionLibrary::FinishSpawn(
 	AProjectile* Projectile,
 	const FVector& SpawnLocation,
 	const FRotator& SpawnRotation,
 	const FVector& LaunchDir,
-	float GravityScale /*= 1.0f*/)
+	float GravityScale)
 {
 	if (!IsValid(Projectile)) return;
 
