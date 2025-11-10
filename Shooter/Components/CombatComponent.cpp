@@ -1,5 +1,4 @@
-﻿#include "C:\Users\inga.harutyunyan\Documents\Unreal Projects\Shooter\Intermediate\Build\Win64\x64\ShooterEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h"
-#include "../Weapons/Grenade.h"
+﻿#include "../Weapons/Grenade.h"
 #include "CombatComponent.h"
 #include "TimerManager.h"
 #include "Kismet/GameplayStatics.h"
