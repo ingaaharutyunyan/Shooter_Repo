@@ -2,13 +2,12 @@
 
 
 #include "Fps_BlueprintFunctionLibrary.h"
-
 #include "Shooter/Weapons/Projectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 
 // method that sets up a projectile of any type, without returning reference or initializing them in real world.
-AActor* UFps_BlueprintFunctionLibrary::SpawnActorDeferred( 
+AProjectile* UFps_BlueprintFunctionLibrary::SpawnActorDeferred( 
 	const UObject* WorldContextObject,
 	TSubclassOf<AProjectile> ProjectileClass,
 	const FVector SpawnLocation,

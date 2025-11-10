@@ -13,6 +13,7 @@ public:
 	AGrenade();
 	virtual void BeginPlay() override;
 	virtual void DealDamage() override;
+	
 
 protected:
 	// Explosion settings
@@ -29,3 +30,6 @@ private:
 	FTimerHandle ExplosionTimer;
 	void Explode();
 };
+
+
+

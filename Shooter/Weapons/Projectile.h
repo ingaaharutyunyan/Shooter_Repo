@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "GameFramework/ProjectileMovementComponent.h"
 #include "Projectile.generated.h"
 
 class UProjectileMovementComponent;
@@ -20,6 +21,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Projectile")
 	virtual void DealDamage();
+
+	UProjectileMovementComponent* GetProjectileMovement() const { return ProjectileMovementComponent; }
+	void SetProjectileMovement(FVector vel) const { ProjectileMovementComponent->Velocity = vel; }
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")

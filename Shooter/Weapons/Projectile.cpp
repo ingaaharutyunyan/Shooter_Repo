@@ -1,9 +1,7 @@
 ﻿#include "Projectile.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
-
 #include "Engine/CollisionProfile.h" 
-#include "Kismet/GameplayStatics.h"
 
 AProjectile::AProjectile()
 {
@@ -20,6 +18,7 @@ AProjectile::AProjectile()
 	ProjectileMovementComponent->MaxSpeed = 1000.0f;
 	ProjectileMovementComponent->bRotationFollowsVelocity = true;
 	ProjectileMovementComponent->ProjectileGravityScale = 1.0f;
+
 }
 
 void AProjectile::BeginPlay()
@@ -31,6 +30,7 @@ void AProjectile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
+
 
 void AProjectile::DealDamage()
 {
